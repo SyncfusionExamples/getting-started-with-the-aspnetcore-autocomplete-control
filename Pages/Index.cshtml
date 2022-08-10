@@ -1,0 +1,25 @@
+﻿@page
+
+@{
+    var localData = new GameDataModel().GetData();
+    var sortOption = "Descending";
+}
+
+<div style="width: 250px; margin : 15% 35% 15% 35%">
+
+    <ejs-autocomplete id="autocomplete_example" sortOrder="@sortOption" highlight="true" autofill="true"
+    placeholder="Select a name" popupHeight="400px" popupWidth="250px"
+    query="new ej.data.Query().select(['FirstName', 'EmployeeID']).take(10).requiresCount()">
+        <e-autocomplete-fields value="FirstName"></e-autocomplete-fields>
+        <e-data-manager url="https://ej2services.syncfusion.com/production/web-services/api/Employees" 
+                        adaptor="WebApiAdaptor" 
+                        crossDomain="true">  
+        </e-data-manager>
+    </ejs-autocomplete>
+
+     @*<ejs-autocomplete id="autocomplete_example" dataSource="@localData"
+    placeholder="Select a game" popupHeight="400px" popupWidth="250px">
+    <e-autocomplete-fields value="Name"></e-autocomplete-fields>
+    </ejs-autocomplete>*@
+
+</div>
